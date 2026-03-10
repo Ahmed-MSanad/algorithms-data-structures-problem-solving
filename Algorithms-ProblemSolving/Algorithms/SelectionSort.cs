@@ -1,26 +1,31 @@
 ﻿namespace Algorithms_ProblemSolving.Algorithms
 {
-    public class InsertionSort
+    public class SelectionSort
     {
         public static void Sort(int[] numbers, Func<int, int, bool> compare)
         {
-            for(int j = 1; j < numbers.Length; j++)
+            for(int j = 0; j < numbers.Length - 1; j++)
             {
-                int key = numbers[j], i = j - 1;
-                while(i >= 0 && compare(key, numbers[i]))
+                int i = j + 1, keyIndex = j;
+                while(i < numbers.Length)
                 {
-                    numbers[i + 1] = numbers[i];
-                    i--;
+                    keyIndex = compare(numbers[i], numbers[keyIndex]) ? i : keyIndex;
+                    i++;
                 }
-                numbers[i + 1] = key;
+                if (keyIndex != j)
+                {
+                    int temp = numbers[j];
+                    numbers[j] = numbers[keyIndex];
+                    numbers[keyIndex] = temp;
+                }
             }
         }
 
         public static void Run()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine(new string('=', 100));
-            Console.WriteLine("Insertion Sort");
+            Console.WriteLine("Selection Sort");
 
             int[] numbers = { 5, 2, 3, 6, 7, 1 };
             Sort(numbers, (a, b) => a < b);
