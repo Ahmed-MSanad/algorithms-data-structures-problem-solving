@@ -8,6 +8,7 @@ namespace Algorithms_ProblemSolving
         {
             InsertionSort.Run();
             SelectionSort.Run();
+            BubbleSort.Run();
         }
     }
 }
