@@ -11,6 +11,7 @@ namespace Algorithms_ProblemSolving
             //BubbleSort.Run();
             //QuickSort.Run();
             MergeSort.Run();
+            OptimizedMergeSort.Run();
         }
     }
 }
