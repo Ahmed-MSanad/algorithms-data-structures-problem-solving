@@ -2,21 +2,21 @@
 {
     public class MergeSort
     {
-        public static void Sort(int[] numbers, Func<int, int, bool> comapre)
+        public static void Sort(int[] numbers, Func<int, int, bool> compare)
         {
             if (numbers == null || numbers.Length < 2) return;
-            Merge_Sort(numbers, 0, numbers.Length - 1, comapre);
+            Merge_Sort(numbers, 0, numbers.Length - 1, compare);
         }
-        private static void Merge_Sort(int[] numbers, int l, int r, Func<int, int, bool> comapre) // Time Complexity: O(log n) , Space Complexity: O(n)
+        private static void Merge_Sort(int[] numbers, int l, int r, Func<int, int, bool> compare) // Time Complexity: O(nlog n) , Space Complexity: O(n)
         {
             if (l >= r) return;
 
             int mid = (r - l) / 2 + l;
-            Merge_Sort(numbers, l, mid, comapre);
-            Merge_Sort(numbers, mid + 1, r, comapre);
-            Merge(numbers, l, mid, r, comapre);
+            Merge_Sort(numbers, l, mid, compare);
+            Merge_Sort(numbers, mid + 1, r, compare);
+            Merge(numbers, l, mid, r, compare);
         }
-        private static void Merge(int[] numbers, int l, int mid, int r, Func<int, int, bool> comapre) // Time Complexity: O(n) , Space Complexity: O(n)
+        private static void Merge(int[] numbers, int l, int mid, int r, Func<int, int, bool> compare) // Time Complexity: O(n) , Space Complexity: O(n)
         {
             int n1 = mid - l + 1, n2 = r - mid;
 
@@ -30,7 +30,7 @@
             i = 0;j = 0;
             while(i < n1 && j < n2)
             {
-                if (comapre(leftArr[i], rightArr[j])) numbers[k++] = leftArr[i++];
+                if (compare(leftArr[i], rightArr[j]) || leftArr[i] == rightArr[j]) numbers[k++] = leftArr[i++];
                 else numbers[k++] = rightArr[j++];
             }
 
