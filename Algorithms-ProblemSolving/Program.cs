@@ -6,10 +6,11 @@ namespace Algorithms_ProblemSolving
     {
         static void Main(string[] args)
         {
-            InsertionSort.Run();
-            SelectionSort.Run();
-            BubbleSort.Run();
-            QuickSort.Run();
+            //InsertionSort.Run();
+            //SelectionSort.Run();
+            //BubbleSort.Run();
+            //QuickSort.Run();
+            MergeSort.Run();
         }
     }
 }
